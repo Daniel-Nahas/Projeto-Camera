@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 export default function App() {
@@ -51,6 +51,15 @@ async function abrirCamera() {
 
       <Text>{status}</Text>
 
+      {
+        imageUri ?(
+          <Image source={{uri:imageUri}} resizeMode='cover' style={styles.imagem}/>
+        ):(
+            <Text>Nenhuma foto capturada</Text>
+        )
+
+      }
+
     </View>
   );
 }
@@ -64,5 +73,6 @@ const styles = StyleSheet.create({
   },
   titulo:{},
   btn:{},
-  txtBtn:{}
+  txtBtn:{},
+  imagem:{},
 });
