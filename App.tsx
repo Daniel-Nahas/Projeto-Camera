@@ -25,6 +25,14 @@ async function abrirCamera() {
       quality:1
     })
 
+    if(result.canceled){
+      setStatus("Câmera cancelada!");
+    } else{
+      const foto = result.assets[0];
+      setImageUri(foto.uri);
+      setStatus("Imagem capturada");
+    }
+
   }catch(error){
     setStatus("Erro ao abrir");
   }
